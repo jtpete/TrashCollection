@@ -9,12 +9,14 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TrashGuy.Models;
 
 namespace IdentitySample.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
         public AccountController()
         {
         }
@@ -160,10 +162,18 @@ namespace IdentitySample.Controllers
                     ZipCode = model.ZipCode,
                     StartDate = model.StartDate
                 };
+                var schedule = new ScheduleModel
+                {
+                    User = user,
+                    DefaultPickupDay = user.StartDate.DayOfWeek.ToString(),
+                    Id = user.Id,
+                };
+                user.Schedule = schedule;
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");

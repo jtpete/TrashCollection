@@ -6,14 +6,14 @@ namespace TrashGuy.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class second : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class autogenerateId : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(second));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(autogenerateId));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705022158339_second"; }
+            get { return "201705031940517_autogenerate Id"; }
         }
         
         string IMigrationMetadata.Source

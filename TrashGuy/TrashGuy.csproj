@@ -49,11 +49,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -312,6 +312,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\ScheduleModelsController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -324,19 +325,24 @@
     <Compile Include="Migrations\201705022142495_first.Designer.cs">
       <DependentUpon>201705022142495_first.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705022158339_second.cs" />
-    <Compile Include="Migrations\201705022158339_second.Designer.cs">
-      <DependentUpon>201705022158339_second.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201705031321595_Added Application Role Model.cs" />
     <Compile Include="Migrations\201705031321595_Added Application Role Model.Designer.cs">
       <DependentUpon>201705031321595_Added Application Role Model.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705031940517_autogenerate Id.cs" />
+    <Compile Include="Migrations\201705031940517_autogenerate Id.Designer.cs">
+      <DependentUpon>201705031940517_autogenerate Id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705032142011_blackout and specialpickup table add.cs" />
+    <Compile Include="Migrations\201705032142011_blackout and specialpickup table add.Designer.cs">
+      <DependentUpon>201705032142011_blackout and specialpickup table add.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ScheduleModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -346,6 +352,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\ScheduleModels\Create.cshtml" />
+    <Content Include="Views\ScheduleModels\Delete.cshtml" />
+    <Content Include="Views\ScheduleModels\Details.cshtml" />
+    <Content Include="Views\ScheduleModels\Edit.cshtml" />
+    <Content Include="Views\ScheduleModels\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -363,11 +374,14 @@
     <EmbeddedResource Include="Migrations\201705022142495_first.resx">
       <DependentUpon>201705022142495_first.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705022158339_second.resx">
-      <DependentUpon>201705022158339_second.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705031321595_Added Application Role Model.resx">
       <DependentUpon>201705031321595_Added Application Role Model.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705031940517_autogenerate Id.resx">
+      <DependentUpon>201705031940517_autogenerate Id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705032142011_blackout and specialpickup table add.resx">
+      <DependentUpon>201705032142011_blackout and specialpickup table add.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

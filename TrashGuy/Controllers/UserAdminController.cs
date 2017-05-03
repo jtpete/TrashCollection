@@ -10,12 +10,14 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using TrashGuy.Models;
 
 namespace IdentitySample.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class UsersAdminController : Controller
     {
+
         public UsersAdminController()
         {
         }
@@ -107,6 +109,14 @@ namespace IdentitySample.Controllers
                 user.State = userViewModel.State;
                 user.ZipCode = userViewModel.ZipCode;
                 user.StartDate = userViewModel.StartDate;
+
+                var schedule = new ScheduleModel
+                {
+                    User = user,
+                    DefaultPickupDay = user.StartDate.DayOfWeek.ToString(),
+                    Id = user.Id,
+                };
+                user.Schedule = schedule;
 
                 var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
 
