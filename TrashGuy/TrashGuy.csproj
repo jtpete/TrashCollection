@@ -328,6 +328,10 @@
     <Compile Include="Migrations\201705022158339_second.Designer.cs">
       <DependentUpon>201705022158339_second.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705031321595_Added Application Role Model.cs" />
+    <Compile Include="Migrations\201705031321595_Added Application Role Model.Designer.cs">
+      <DependentUpon>201705031321595_Added Application Role Model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -361,6 +365,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705022158339_second.resx">
       <DependentUpon>201705022158339_second.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705031321595_Added Application Role Model.resx">
+      <DependentUpon>201705031321595_Added Application Role Model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

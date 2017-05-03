@@ -22,8 +22,8 @@ namespace TrashGuy.Migrations
         {
             var userStore = new UserStore<ApplicationUser>(context);
             var userManager = new UserManager<ApplicationUser>(userStore);
-            var roleStore = new RoleStore<IdentityRole>(context);
-            var roleManager = new RoleManager<IdentityRole>(roleStore);
+            var roleStore = new RoleStore<ApplicationRole>(context);
+            var roleManager = new RoleManager<ApplicationRole>(roleStore);
             const string name = "admin@admin.com";
             const string password = "Admin@12345";
             const string roleName = "Admin";
@@ -33,7 +33,7 @@ namespace TrashGuy.Migrations
             var role = roleManager.FindByName(roleName);
             if (!context.Roles.Any(r => r.Name == roleName))
             {
-                role = new IdentityRole(roleName);
+                role = new ApplicationRole(roleName);
                 var roleResult = roleManager.Create(role);
             }
 
