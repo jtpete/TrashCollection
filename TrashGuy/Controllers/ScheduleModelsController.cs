@@ -88,7 +88,7 @@ namespace TrashGuy.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,DefaultPickupDay")] ScheduleModel scheduleModel)
+        public ActionResult Edit([Bind(Include = "Id,DefaultPickupDay,ApplicationUser,VacationStartDate,VacationEndDate")] ScheduleModel scheduleModel)
         {
             if (ModelState.IsValid)
             {

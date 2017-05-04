@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace TrashGuy.Models
 {
@@ -16,38 +17,19 @@ namespace TrashGuy.Models
         
         [Display(Name = "Default Pickup Day")]
         public string DefaultPickupDay { get; set; }
-        [Display(Name = "No Pickups")]
 
-        public ICollection<BlackoutDates> BlackoutDates { get; set; }
-        [Display(Name = "Extra Pickups")]
+        [Display(Name = "Start Vacation")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public DateTime? VacationStartDate { get; set; }
 
-        public ICollection<SpecialPickupDates> SpecialPickupDates { get; set;}
+        [Display(Name = "End Vacation")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, NullDisplayText = "")]
+        public DateTime? VacationEndDate { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
-
-
     }
 
-    public class BlackoutDates
-    {
-        [Key]
-        public int BlackoutId { get; set; }
-
-        public string ScheduleId { get; set; }
-        [ForeignKey("ScheduleId")]
-        public virtual ScheduleModel Schedule { get; set; }
-        public DateTime BlackoutDate { get; set; }
-    }
-
-    public class SpecialPickupDates
-    {
-        [Key]
-        public int SpecialPickupId { get; set; }
-
-        public string ScheduleId { get; set; }
-        [ForeignKey("ScheduleId")]
-        public virtual ScheduleModel Schedule { get; set; }
-        public DateTime SpecialPickupDate { get; set; }
-    }
 
 }

@@ -173,7 +173,6 @@ namespace IdentitySample.Controllers
                 if (result.Succeeded)
                 {
                     return View("Login");
-
                 }
                 AddErrors(result);
             }

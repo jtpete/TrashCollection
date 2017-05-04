@@ -4,10 +4,9 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Your Pickup Schedule:</h2>
 
 <div>
-    <h4>ScheduleModel</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,13 +16,14 @@
         <dd>
             @Html.DisplayFor(model => model.ApplicationUser.Name)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.Id)
+            @Html.DisplayNameFor(model => model.ApplicationUser.DisplayAddress)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Id)
+            @Html.DisplayFor(model => model.ApplicationUser.DisplayAddress)
+        </dd>
+        <dd>
         </dd>
 
         <dt>
@@ -34,9 +34,24 @@
             @Html.DisplayFor(model => model.DefaultPickupDay)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationStartDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.VacationEndDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VacationEndDate)
+        </dd>
+
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Home", "Index", "Home")
 </p>
