@@ -112,7 +112,7 @@ namespace IdentitySample.Controllers
 
                 var schedule = new ScheduleModel
                 {
-                    User = user,
+                    ApplicationUser = user,
                     DefaultPickupDay = user.StartDate.DayOfWeek.ToString(),
                     Id = user.Id,
                 };

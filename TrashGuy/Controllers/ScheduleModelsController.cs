@@ -18,7 +18,7 @@ namespace TrashGuy.Controllers
         // GET: ScheduleModels
         public ActionResult Index()
         {
-            var scheduleModels = db.ScheduleModels.Include(s => s.User);
+            var scheduleModels = db.ScheduleModels.Include(s => s.ApplicationUser);
             return View(scheduleModels.ToList());
         }
 
@@ -29,7 +29,12 @@ namespace TrashGuy.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScheduleModel scheduleModel = db.ScheduleModels.Find(id);
+            ApplicationUser user = db.Users.Include(x => x.Schedule).Where(x => x.Id == id).FirstOrDefault();
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            ScheduleModel scheduleModel = db.ScheduleModels.Find(user.Schedule.Id);
             if (scheduleModel == null)
             {
                 return HttpNotFound();
@@ -89,7 +94,7 @@ namespace TrashGuy.Controllers
             {
                 db.Entry(scheduleModel).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "ScheduleModels", new { scheduleModel.Id });
             }
             ViewBag.Id = new SelectList(db.Users, "Id", "Name", scheduleModel.Id);
             return View(scheduleModel);

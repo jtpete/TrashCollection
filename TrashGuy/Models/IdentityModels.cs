@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
@@ -26,7 +27,7 @@ namespace IdentitySample.Models
         [Display(Name = "Zip Code")]
         public string ZipCode { get; set; }
         public DateTime StartDate { get; set; }
-        public virtual ScheduleModel Schedule { get; set; }
+        public ScheduleModel Schedule { get; set; }
 
         public string DisplayAddress
         {

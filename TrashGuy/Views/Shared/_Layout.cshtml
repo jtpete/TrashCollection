@@ -27,11 +27,11 @@
 
                     @if (Request.IsAuthenticated && User.IsInRole("Admin")) {
                         <li>@Html.ActionLink("RolesAdmin", "Index", "RolesAdmin")</li>
-                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin")</li>
+                        <li>@Html.ActionLink("UsersAdmin", "Index", "UsersAdmin", new {})</li>
                     }
                     @if (Request.IsAuthenticated && !User.IsInRole("Admin") && !User.IsInRole("Employee"))
                     {
-                        <li>@Html.ActionLink("Pickup Schedule", "Index", "ScheduleModels")</li>
+                        @Html.Partial("_ClientViewPartial")
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

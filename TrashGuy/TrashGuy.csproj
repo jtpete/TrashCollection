@@ -337,6 +337,10 @@
     <Compile Include="Migrations\201705032142011_blackout and specialpickup table add.Designer.cs">
       <DependentUpon>201705032142011_blackout and specialpickup table add.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705041601421_correcting blackout and specialpickup id to int.cs" />
+    <Compile Include="Migrations\201705041601421_correcting blackout and specialpickup id to int.Designer.cs">
+      <DependentUpon>201705041601421_correcting blackout and specialpickup id to int.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -357,6 +361,7 @@
     <Content Include="Views\ScheduleModels\Details.cshtml" />
     <Content Include="Views\ScheduleModels\Edit.cshtml" />
     <Content Include="Views\ScheduleModels\Index.cshtml" />
+    <Content Include="Views\Shared\_ClientViewPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -382,6 +387,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705032142011_blackout and specialpickup table add.resx">
       <DependentUpon>201705032142011_blackout and specialpickup table add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705041601421_correcting blackout and specialpickup id to int.resx">
+      <DependentUpon>201705041601421_correcting blackout and specialpickup id to int.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

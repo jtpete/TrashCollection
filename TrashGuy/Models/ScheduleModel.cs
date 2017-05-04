@@ -11,17 +11,20 @@ namespace TrashGuy.Models
     [Table("Schedule")]
     public class ScheduleModel
     {
-        [Key]
-        public int ScheduleId { get; set;  }
-
-        public string Id { get; set; }
-        [Required]
-        public virtual ApplicationUser User { get; set; }
-
+        [Key, ForeignKey("ApplicationUser")]
+        public string Id { get; set;  }
+        
         [Display(Name = "Default Pickup Day")]
         public string DefaultPickupDay { get; set; }
+        [Display(Name = "No Pickups")]
+
         public ICollection<BlackoutDates> BlackoutDates { get; set; }
+        [Display(Name = "Extra Pickups")]
+
         public ICollection<SpecialPickupDates> SpecialPickupDates { get; set;}
+
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
 
     }
 
@@ -30,7 +33,7 @@ namespace TrashGuy.Models
         [Key]
         public int BlackoutId { get; set; }
 
-        public int ScheduleId { get; set; }
+        public string ScheduleId { get; set; }
         [ForeignKey("ScheduleId")]
         public virtual ScheduleModel Schedule { get; set; }
         public DateTime BlackoutDate { get; set; }
@@ -41,7 +44,7 @@ namespace TrashGuy.Models
         [Key]
         public int SpecialPickupId { get; set; }
 
-        public int ScheduleId { get; set; }
+        public string ScheduleId { get; set; }
         [ForeignKey("ScheduleId")]
         public virtual ScheduleModel Schedule { get; set; }
         public DateTime SpecialPickupDate { get; set; }
