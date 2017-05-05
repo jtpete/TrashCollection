@@ -10,117 +10,117 @@ using TrashGuy.Models;
 
 namespace TrashGuy.Controllers
 {
-    public class ScheduleModelsController : Controller
+    public class PickupModelsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ScheduleModels
+        // GET: PickupModels
         public ActionResult Index()
         {
-            var scheduleModels = db.ScheduleModels.Include(s => s.ApplicationUser);
-            return View(scheduleModels.ToList());
+            var pickupModels = db.PickupModels.Include(p => p.AppUser);
+
+            ICollection<PickupModel> billableDates = pickupModels.Where(d => d.PickupDate.Year == DateTime.Now.Year && d.PickupDate.Month == DateTime.Now.Month).ToList();
+            double MonthsBill = billableDates.Count() * 20;
+            MonthsBill = Math.Round(MonthsBill);
+            ViewBag.Bill = MonthsBill;
+            return View(billableDates.ToList());
         }
 
-        // GET: ScheduleModels/Details/5
+        // GET: PickupModels/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ApplicationUser user = db.Users.Include(x => x.Schedule).Where(x => x.Id == id).FirstOrDefault();
-            if (user == null)
+            PickupModel pickupModel = db.PickupModels.Find(id);
+            if (pickupModel == null)
             {
                 return HttpNotFound();
             }
-            ScheduleModel scheduleModel = db.ScheduleModels.Find(user.Schedule.Id);
-            if (scheduleModel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(scheduleModel);
+            return View(pickupModel);
         }
 
-        // GET: ScheduleModels/Create
+        // GET: PickupModels/Create
         public ActionResult Create()
         {
             ViewBag.Id = new SelectList(db.Users, "Id", "Name");
             return View();
         }
 
-        // POST: ScheduleModels/Create
+        // POST: PickupModels/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ScheduleId,DefaultPickupDay")] ScheduleModel scheduleModel)
+        public ActionResult Create([Bind(Include = "PickupId,Id,PickupDate")] PickupModel pickupModel)
         {
             if (ModelState.IsValid)
             {
-                db.ScheduleModels.Add(scheduleModel);
+                db.PickupModels.Add(pickupModel);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id = new SelectList(db.Users, "Id", "Name", scheduleModel.Id);
-            return View(scheduleModel);
+            ViewBag.Id = new SelectList(db.Users, "Id", "Name", pickupModel.Id);
+            return View(pickupModel);
         }
 
-        // GET: ScheduleModels/Edit/5
+        // GET: PickupModels/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScheduleModel scheduleModel = db.ScheduleModels.Find(id);
-            if (scheduleModel == null)
+            PickupModel pickupModel = db.PickupModels.Find(id);
+            if (pickupModel == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.Users, "Id", "Name", scheduleModel.Id);
-            return View(scheduleModel);
+            ViewBag.Id = new SelectList(db.Users, "Id", "Name", pickupModel.Id);
+            return View(pickupModel);
         }
 
-        // POST: ScheduleModels/Edit/5
+        // POST: PickupModels/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,DefaultPickupDay,ApplicationUser,VacationStartDate,VacationEndDate")] ScheduleModel scheduleModel)
+        public ActionResult Edit([Bind(Include = "PickupId,Id,PickupDate")] PickupModel pickupModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(scheduleModel).State = EntityState.Modified;
+                db.Entry(pickupModel).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Details", "ScheduleModels", new { scheduleModel.Id });
+                return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.Users, "Id", "Name", scheduleModel.Id);
-            return View(scheduleModel);
+            ViewBag.Id = new SelectList(db.Users, "Id", "Name", pickupModel.Id);
+            return View(pickupModel);
         }
 
-        // GET: ScheduleModels/Delete/5
+        // GET: PickupModels/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScheduleModel scheduleModel = db.ScheduleModels.Find(id);
-            if (scheduleModel == null)
+            PickupModel pickupModel = db.PickupModels.Find(id);
+            if (pickupModel == null)
             {
                 return HttpNotFound();
             }
-            return View(scheduleModel);
+            return View(pickupModel);
         }
 
-        // POST: ScheduleModels/Delete/5
+        // POST: PickupModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            ScheduleModel scheduleModel = db.ScheduleModels.Find(id);
-            db.ScheduleModels.Remove(scheduleModel);
+            PickupModel pickupModel = db.PickupModels.Find(id);
+            db.PickupModels.Remove(pickupModel);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

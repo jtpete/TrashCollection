@@ -1,6 +1,6 @@
 namespace TrashGuy.Migrations
 {
-    using IdentitySample.Models;
+    using TrashGuy.Models;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Microsoft.AspNet.Identity.Owin;
@@ -10,15 +10,15 @@ namespace TrashGuy.Migrations
     using System.Linq;
     using System.Web;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<IdentitySample.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TrashGuy.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "IdentitySample.Models.ApplicationDbContext";
+            ContextKey = "TrashGuy.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(IdentitySample.Models.ApplicationDbContext context)
+        protected override void Seed(TrashGuy.Models.ApplicationDbContext context)
         {
 
             const string name = "admin@admin.com";

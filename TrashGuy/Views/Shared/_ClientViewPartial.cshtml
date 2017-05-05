@@ -1,3 +1,4 @@
 ﻿@using Microsoft.AspNet.Identity;
 
 <li>@Html.ActionLink("Pickup Schedule", "Details", "ScheduleModels", new { @id  = User.Identity.GetUserId() ?? "", }, null)</li>
+<li>@Html.ActionLink("Billing", "Index", "PickupModels")</li>

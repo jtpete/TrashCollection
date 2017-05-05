@@ -6,14 +6,14 @@ namespace TrashGuy.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class AddedApplicationRoleModel : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class changedkeytodatabasegeneratedkey : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedApplicationRoleModel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(changedkeytodatabasegeneratedkey));
         
         string IMigrationMetadata.Id
         {
-            get { return "201705031321595_Added Application Role Model"; }
+            get { return "201705051607245_changed key to database generated key"; }
         }
         
         string IMigrationMetadata.Source

@@ -1,4 +1,4 @@
-﻿using IdentitySample.Models;
+﻿using TrashGuy.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -10,14 +10,13 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using TrashGuy.Models;
 
-namespace IdentitySample.Controllers
+namespace TrashGuy.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class UsersAdminController : Controller
     {
-
+        ApplicationDbContext db = new ApplicationDbContext();
         public UsersAdminController()
         {
         }
@@ -75,7 +74,34 @@ namespace IdentitySample.Controllers
 
             return View(user);
         }
-
+        
+        public ActionResult ApplyPickup(string id)
+        {
+            PickupModel pickup = new PickupModel();
+            pickup.Id = id;
+            return View(pickup);
+        }
+        [HttpPost]
+        public async Task<ActionResult> ApplyPickup([Bind(Include = "PickupId,Id,PickupDate,AppUser")]PickupModel pickupModel, params string[] selectedRoles)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = db.Users.Find(pickupModel.Id); 
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                var pickup = new PickupModel
+                {
+                    AppUser = user,
+                    PickupDate = pickupModel.PickupDate,
+                    Id = pickupModel.Id
+                };
+                var result = db.PickupModels.Add(pickup);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
         //
         // GET: /Users/Create
         public async Task<ActionResult> Create()

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<TrashGuy.Models.PickupModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>This Months Bill: $@ViewBag.Bill</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PickupDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PickupDate)
+        </td>
+    </tr>
+}
+
+</table>

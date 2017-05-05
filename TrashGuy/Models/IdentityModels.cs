@@ -6,9 +6,9 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using TrashGuy.Models;
 
-namespace IdentitySample.Models
+
+namespace TrashGuy.Models
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -28,6 +28,7 @@ namespace IdentitySample.Models
         public string ZipCode { get; set; }
         public DateTime StartDate { get; set; }
         public ScheduleModel Schedule { get; set; }
+        public ICollection<PickupModel> Pickups { get; set; }
 
         public string DisplayAddress
         {
@@ -72,6 +73,9 @@ namespace IdentitySample.Models
 
         public System.Data.Entity.DbSet<TrashGuy.Models.ScheduleModel> ScheduleModels { get; set; }
 
-        //public System.Data.Entity.DbSet<IdentitySample.Models.ApplicationUser> ApplicationUsers { get; set; }
+        public System.Data.Entity.DbSet<TrashGuy.Models.PickupModel> PickupModels { get; set; }
+
+     
+
     }
 }

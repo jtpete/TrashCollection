@@ -311,47 +311,21 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PickupModelsController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\ScheduleModelsController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201705022058319_InitialCreate.cs" />
-    <Compile Include="Migrations\201705022058319_InitialCreate.Designer.cs">
-      <DependentUpon>201705022058319_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705022142495_first.cs" />
-    <Compile Include="Migrations\201705022142495_first.Designer.cs">
-      <DependentUpon>201705022142495_first.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705031321595_Added Application Role Model.cs" />
-    <Compile Include="Migrations\201705031321595_Added Application Role Model.Designer.cs">
-      <DependentUpon>201705031321595_Added Application Role Model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705031940517_autogenerate Id.cs" />
-    <Compile Include="Migrations\201705031940517_autogenerate Id.Designer.cs">
-      <DependentUpon>201705031940517_autogenerate Id.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705032142011_blackout and specialpickup table add.cs" />
-    <Compile Include="Migrations\201705032142011_blackout and specialpickup table add.Designer.cs">
-      <DependentUpon>201705032142011_blackout and specialpickup table add.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705041601421_correcting blackout and specialpickup id to int.cs" />
-    <Compile Include="Migrations\201705041601421_correcting blackout and specialpickup id to int.Designer.cs">
-      <DependentUpon>201705041601421_correcting blackout and specialpickup id to int.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705042005100_changed blackout date as nullable.cs" />
-    <Compile Include="Migrations\201705042005100_changed blackout date as nullable.Designer.cs">
-      <DependentUpon>201705042005100_changed blackout date as nullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201705042018189_Dropped blackout and special date tables and added one date as properties.cs" />
-    <Compile Include="Migrations\201705042018189_Dropped blackout and special date tables and added one date as properties.Designer.cs">
-      <DependentUpon>201705042018189_Dropped blackout and special date tables and added one date as properties.cs</DependentUpon>
+    <Compile Include="Migrations\201705051607245_changed key to database generated key.cs" />
+    <Compile Include="Migrations\201705051607245_changed key to database generated key.Designer.cs">
+      <DependentUpon>201705051607245_changed key to database generated key.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
+    <Compile Include="Models\PickupModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ScheduleModel.cs" />
@@ -370,6 +344,12 @@
     <Content Include="Views\ScheduleModels\Edit.cshtml" />
     <Content Include="Views\ScheduleModels\Index.cshtml" />
     <Content Include="Views\Shared\_ClientViewPartial.cshtml" />
+    <Content Include="Views\PickupModels\Create.cshtml" />
+    <Content Include="Views\PickupModels\Delete.cshtml" />
+    <Content Include="Views\PickupModels\Details.cshtml" />
+    <Content Include="Views\PickupModels\Edit.cshtml" />
+    <Content Include="Views\PickupModels\Index.cshtml" />
+    <Content Include="Views\UsersAdmin\ApplyPickup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -381,29 +361,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201705022058319_InitialCreate.resx">
-      <DependentUpon>201705022058319_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705022142495_first.resx">
-      <DependentUpon>201705022142495_first.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705031321595_Added Application Role Model.resx">
-      <DependentUpon>201705031321595_Added Application Role Model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705031940517_autogenerate Id.resx">
-      <DependentUpon>201705031940517_autogenerate Id.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705032142011_blackout and specialpickup table add.resx">
-      <DependentUpon>201705032142011_blackout and specialpickup table add.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705041601421_correcting blackout and specialpickup id to int.resx">
-      <DependentUpon>201705041601421_correcting blackout and specialpickup id to int.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705042005100_changed blackout date as nullable.resx">
-      <DependentUpon>201705042005100_changed blackout date as nullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201705042018189_Dropped blackout and special date tables and added one date as properties.resx">
-      <DependentUpon>201705042018189_Dropped blackout and special date tables and added one date as properties.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201705051607245_changed key to database generated key.resx">
+      <DependentUpon>201705051607245_changed key to database generated key.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

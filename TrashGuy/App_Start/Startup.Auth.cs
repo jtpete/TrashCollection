@@ -2,11 +2,11 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using IdentitySample.Models;
+using TrashGuy.Models;
 using Owin;
 using System;
 
-namespace IdentitySample
+namespace TrashGuy
 {
     public partial class Startup
     {

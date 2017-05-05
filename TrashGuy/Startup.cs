@@ -1,6 +1,6 @@
 ﻿using Owin;
 
-namespace IdentitySample
+namespace TrashGuy
 {
     public partial class Startup
     {
