@@ -6,20 +6,33 @@
 
 <h2>This Months Bill: $@ViewBag.Bill</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PickupDate)
-        </th>
-        <th></th>
-    </tr>
+<br />
+<br />
+<div class="row">
+    <div class="col-md-6">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PickupDate)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PickupDate)
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PickupDate)
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>
+    <div class="col-md-6">
+        <img src="~/Images/bill.png" />
+    </div>
+</div>
+<div>
+    @Html.ActionLink("Home", "Index", "Home")
+</div>

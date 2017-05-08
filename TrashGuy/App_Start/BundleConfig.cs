@@ -25,9 +25,9 @@ namespace TrashGuy
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css",
                       "~/Content/themes/base/minified/jquery-ui.min.css",
-                      "~/Content/GoogleMap.css"));
+                      "~/Content/GoogleMap.css",
+                      "~/Content/site.css"));
         }
     }
 }

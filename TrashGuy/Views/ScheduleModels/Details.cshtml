@@ -4,52 +4,57 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Your Pickup Schedule:</h2>
+<h2>Your Pickup:</h2>
 
-<div>
+<div class="row">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.Name)
-        </dt>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.Name)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.DisplayAddress)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ApplicationUser.DisplayAddress)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.DisplayAddress)
-        </dd>
-        <dd>
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ApplicationUser.DisplayAddress)
+            </dd>
+            <dd>
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DefaultPickupDay)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.DefaultPickupDay)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.DefaultPickupDay)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.DefaultPickupDay)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.VacationStartDate)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.VacationStartDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.VacationStartDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.VacationEndDate)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.VacationStartDate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.VacationEndDate)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.VacationEndDate)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.VacationEndDate)
+            </dd>
 
-    </dl>
+        </dl>
+    </div>
+    <div class="col-md-6">
+        <img src="~/Images/schedule.png" />
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

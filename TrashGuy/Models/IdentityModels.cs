@@ -35,6 +35,7 @@ namespace TrashGuy.Models
 
         public ICollection<PickupModel> Pickups { get; set; }
 
+        [Display(Name = "Address")]
         public string DisplayAddress
         {
             get

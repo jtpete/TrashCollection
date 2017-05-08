@@ -347,16 +347,10 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\ScheduleModels\Create.cshtml" />
-    <Content Include="Views\ScheduleModels\Delete.cshtml" />
     <Content Include="Views\ScheduleModels\Details.cshtml" />
     <Content Include="Views\ScheduleModels\Edit.cshtml" />
     <Content Include="Views\ScheduleModels\Index.cshtml" />
     <Content Include="Views\Shared\_ClientViewPartial.cshtml" />
-    <Content Include="Views\PickupModels\Create.cshtml" />
-    <Content Include="Views\PickupModels\Delete.cshtml" />
-    <Content Include="Views\PickupModels\Details.cshtml" />
-    <Content Include="Views\PickupModels\Edit.cshtml" />
     <Content Include="Views\PickupModels\Index.cshtml" />
     <Content Include="Views\UsersAdmin\ApplyPickup.cshtml" />
     <Content Include="Views\ScheduleModels\RouteByZip.cshtml" />

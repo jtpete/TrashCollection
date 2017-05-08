@@ -78,10 +78,15 @@ namespace TrashGuy.Controllers
                     users.Add(user);
                 }
             }
-
+            var viewRoles = new RoleViewModel
+            {
+                Description = role.Description,
+                Id = role.Id,
+                Name = role.Name
+            };
             ViewBag.Users = users;
             ViewBag.UserCount = users.Count();
-            return View(role);
+            return View(viewRoles);
         }
 
         //
@@ -160,7 +165,13 @@ namespace TrashGuy.Controllers
             {
                 return HttpNotFound();
             }
-            return View(role);
+            var viewRoles = new RoleViewModel
+            {
+                Description = role.Description,
+                Id = role.Id,
+                Name = role.Name
+            };
+            return View(viewRoles);
         }
 
         //
