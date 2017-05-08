@@ -14,16 +14,16 @@
     <div class="col-md-6">
         @Html.DisplayNameFor(model => model.ApplicationUser.ZipCode)
     </div>
-@using (Html.BeginForm("RouteByZip", "ScheduleModels", FormMethod.Post, new { id = "TheForm" }))
-{
+    @using (Html.BeginForm("RouteByZip", "ScheduleModels", FormMethod.Post, new { id = "TheForm" }))
+    {
 
-    <div>
-        @Html.DropDownList("ZipCode", new SelectList(ViewBag.ZipCodes), "--Select One--", new
+        <div>
+            @Html.DropDownList("ZipCode", new SelectList(ViewBag.ZipCodes), "--Select One--", new
    {
        onchange = "document.getElementById('TheForm').submit();"
    })
-    </div>
-}
+        </div>
+    }
 </div>
 
 <table class="table">
@@ -40,20 +40,20 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUser.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApplicationUser.DisplayAddress)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DefaultPickupDay)
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApplicationUser.DisplayAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DefaultPickupDay)
+            </td>
 
-    </tr>
-}
+        </tr>
+    }
 
 </table>
-

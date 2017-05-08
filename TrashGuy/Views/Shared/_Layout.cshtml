@@ -33,6 +33,10 @@
                     {
                         @Html.Partial("_ClientViewPartial")
                     }
+                    @if (Request.IsAuthenticated && User.IsInRole("Employee"))
+                    {
+                     <li>@Html.ActionLink("Routes", "Index", "ScheduleModels")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

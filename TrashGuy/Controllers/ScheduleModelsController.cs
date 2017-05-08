@@ -18,7 +18,25 @@ namespace TrashGuy.Controllers
         public ActionResult Index()
         {
             var scheduleModels = db.ScheduleModels.Include(s => s.ApplicationUser);
-            return View(scheduleModels.ToList());
+            var allCustomerRoutes = scheduleModels.Where(s => s.ApplicationUser.Roles.Where(r => r.RoleId != "Employee" && r.RoleId != "Admin").Count() == 0);
+           var uniqueZipCodes = allCustomerRoutes.Select(z => z.ApplicationUser.ZipCode).Distinct();
+            ViewBag.ZipCodes = uniqueZipCodes;
+            return View(allCustomerRoutes.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult RouteByZip(int ZipCode)
+        {
+            var scheduleModels = db.ScheduleModels.Include(s => s.ApplicationUser);
+            var allCustomerRoutes = scheduleModels.Where(s => s.ApplicationUser.Roles.Where(r => r.RoleId != "Employee" && r.RoleId != "Admin").Count() == 0);
+            var uniqueZipCodes = allCustomerRoutes.Select(z => z.ApplicationUser.ZipCode).Distinct();
+            ViewBag.ZipCodes = uniqueZipCodes;
+            string todayDay = DateTime.Now.DayOfWeek.ToString();
+            DateTime todayDate = DateTime.Now;
+            var thisZipRoutes = allCustomerRoutes.Where(s => (s.ApplicationUser.ZipCode == ZipCode.ToString() && s.ApplicationUser.Schedule.DefaultPickupDay == todayDay
+                && ((s.ApplicationUser.Schedule.VacationStartDate == null && s.ApplicationUser.Schedule.VacationEndDate == null) ||
+               (s.ApplicationUser.Schedule.VacationStartDate < todayDate && s.ApplicationUser.Schedule.VacationEndDate > todayDate))));
+            return View(thisZipRoutes.ToList());
         }
 
         // GET: ScheduleModels/Details/5

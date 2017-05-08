@@ -350,6 +350,7 @@
     <Content Include="Views\PickupModels\Edit.cshtml" />
     <Content Include="Views\PickupModels\Index.cshtml" />
     <Content Include="Views\UsersAdmin\ApplyPickup.cshtml" />
+    <Content Include="Views\ScheduleModels\RouteByZip.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
