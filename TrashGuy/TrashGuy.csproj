@@ -200,6 +200,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\GoogleMap.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -322,6 +323,14 @@
     <Compile Include="Migrations\201705051607245_changed key to database generated key.Designer.cs">
       <DependentUpon>201705051607245_changed key to database generated key.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705081535401_schedule model key fix.cs" />
+    <Compile Include="Migrations\201705081535401_schedule model key fix.Designer.cs">
+      <DependentUpon>201705081535401_schedule model key fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705081547491_schedule model key fix2.cs" />
+    <Compile Include="Migrations\201705081547491_schedule model key fix2.Designer.cs">
+      <DependentUpon>201705081547491_schedule model key fix2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
@@ -351,6 +360,7 @@
     <Content Include="Views\PickupModels\Index.cshtml" />
     <Content Include="Views\UsersAdmin\ApplyPickup.cshtml" />
     <Content Include="Views\ScheduleModels\RouteByZip.cshtml" />
+    <Content Include="Views\ScheduleModels\RouteMap.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -364,6 +374,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201705051607245_changed key to database generated key.resx">
       <DependentUpon>201705051607245_changed key to database generated key.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081535401_schedule model key fix.resx">
+      <DependentUpon>201705081535401_schedule model key fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705081547491_schedule model key fix2.resx">
+      <DependentUpon>201705081547491_schedule model key fix2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

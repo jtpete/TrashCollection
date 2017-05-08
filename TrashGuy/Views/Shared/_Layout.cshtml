@@ -35,7 +35,8 @@
                     }
                     @if (Request.IsAuthenticated && User.IsInRole("Employee"))
                     {
-                     <li>@Html.ActionLink("Routes", "Index", "ScheduleModels")</li>
+                     <li>@Html.ActionLink("Routes", "Index", "ScheduleModels")</li> 
+                    <li>@Html.ActionLink("My Map", "RouteMap", "ScheduleModels")</li>
                     }
                 </ul>
                 @Html.Partial("_LoginPartial")

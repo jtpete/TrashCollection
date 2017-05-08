@@ -21,6 +21,7 @@ namespace TrashGuy.Controllers
             var allCustomerRoutes = scheduleModels.Where(s => s.ApplicationUser.Roles.Where(r => r.RoleId != "Employee" && r.RoleId != "Admin").Count() == 0);
            var uniqueZipCodes = allCustomerRoutes.Select(z => z.ApplicationUser.ZipCode).Distinct();
             ViewBag.ZipCodes = uniqueZipCodes;
+
             return View(allCustomerRoutes.ToList());
         }
 
@@ -36,6 +37,37 @@ namespace TrashGuy.Controllers
             var thisZipRoutes = allCustomerRoutes.Where(s => (s.ApplicationUser.ZipCode == ZipCode.ToString() && s.ApplicationUser.Schedule.DefaultPickupDay == todayDay
                 && ((s.ApplicationUser.Schedule.VacationStartDate == null && s.ApplicationUser.Schedule.VacationEndDate == null) ||
                (s.ApplicationUser.Schedule.VacationStartDate < todayDate && s.ApplicationUser.Schedule.VacationEndDate > todayDate))));
+            return View(thisZipRoutes.ToList());
+        }
+        public ActionResult RouteMap()
+        {
+            var scheduleModels = db.ScheduleModels.Include(s => s.ApplicationUser);
+            var allCustomerRoutes = scheduleModels.Where(s => s.ApplicationUser.Roles.Where(r => r.RoleId != "Employee" && r.RoleId != "Admin").Count() == 0).ToList();
+            
+            
+            var uniqueZipCodes = allCustomerRoutes.Select(z => z.ApplicationUser.ZipCode).Distinct().ToList();
+            ViewBag.ZipCodes = uniqueZipCodes;
+            var addresses = allCustomerRoutes.Select(a => a.ApplicationUser.DisplayAddress).ToList();
+            ViewBag.Addresses = addresses;
+
+
+            return View(allCustomerRoutes.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult RouteMap(int ZipCode)
+        {
+            var scheduleModels = db.ScheduleModels.Include(s => s.ApplicationUser);
+            var allCustomerRoutes = scheduleModels.Where(s => s.ApplicationUser.Roles.Where(r => r.RoleId != "Employee" && r.RoleId != "Admin").Count() == 0);
+            var uniqueZipCodes = allCustomerRoutes.Select(z => z.ApplicationUser.ZipCode).Distinct();
+            ViewBag.ZipCodes = uniqueZipCodes;
+            string todayDay = DateTime.Now.DayOfWeek.ToString();
+            DateTime todayDate = DateTime.Now;
+            var thisZipRoutes = allCustomerRoutes.Where(s => (s.ApplicationUser.ZipCode == ZipCode.ToString() && s.ApplicationUser.Schedule.DefaultPickupDay == todayDay
+                && ((s.ApplicationUser.Schedule.VacationStartDate == null && s.ApplicationUser.Schedule.VacationEndDate == null) ||
+               (s.ApplicationUser.Schedule.VacationStartDate < todayDate && s.ApplicationUser.Schedule.VacationEndDate > todayDate))));
+            var addresses = thisZipRoutes.Select(a => a.ApplicationUser.DisplayAddress);
+            ViewBag.Addresses = addresses;
             return View(thisZipRoutes.ToList());
         }
 

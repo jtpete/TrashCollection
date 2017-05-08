@@ -27,6 +27,7 @@ namespace TrashGuy.Models
         [DisplayFormat(DataFormatString = "{0:yyy-MM-dd}", ApplyFormatInEditMode = true, ConvertEmptyStringToNull = true, NullDisplayText = "")]
         public DateTime? VacationEndDate { get; set; }
 
+
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 

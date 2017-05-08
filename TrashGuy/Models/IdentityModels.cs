@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -27,7 +28,11 @@ namespace TrashGuy.Models
         [Display(Name = "Zip Code")]
         public string ZipCode { get; set; }
         public DateTime StartDate { get; set; }
-        public ScheduleModel Schedule { get; set; }
+
+        [ForeignKey("Schedule")]
+        public int ScheduleId;
+        public virtual ScheduleModel Schedule { get; set; }
+
         public ICollection<PickupModel> Pickups { get; set; }
 
         public string DisplayAddress
